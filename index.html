@@ -43,7 +43,19 @@
 		
 	
 						<!-- Input field -->
-						<div class="lg:w-full lg:px-3 py-3 w-full">
+						<div class="lg:w-1/2 lg:px-3 py-3 w-full">
+							<label for="app_name" class="block text-xl font-semibold mb-2">App Name:</label>
+							<input
+								type="text"
+								id="app_name"
+								name="app_name"
+								placeholder="Enter App Name"
+								v-model="appName"
+								class="w-full text-lg p-3 border border-gray-200 rounded focus:ring-indigo-500 focus:border-indigo-500"
+							/>
+						</div>
+
+						<div class="lg:w-1/2 lg:px-3 py-3 w-full">
 							<label for="app_name" class="block text-xl font-semibold mb-2">Screen Name:</label>
 							<input
 								type="text"
@@ -73,7 +85,6 @@
 								@focus="handleFocus(field)"
 								class="w-full text-lg p-3 border border-gray-200 rounded focus:ring-indigo-500 focus:border-indigo-500"
 							/>
-							
 		
 							<!-- Dropdown options -->
 							<template v-if="field.isOpen">
@@ -110,6 +121,8 @@
 			
 								</div>
 							</template>
+
+							
 		
 		
 							<!-- Error message -->
@@ -126,10 +139,23 @@
 							</div>
 		
 						</div>
+						<div class="lg:w-full lg:px-3 py-3 w-full">
+							<label for="app_name" class="block text-xl font-semibold mb-2">Github Username:</label>
+							<input
+								type="text"
+								id="github_name"
+								name="github_name"
+								placeholder="Enter Github Username"
+								v-model="githubName"
+								class="w-full text-lg p-3 border border-gray-200 rounded focus:ring-indigo-500 focus:border-indigo-500"
+							/>
+						</div>
+
+						
 	
 					</div>
 				
-					<div class="lg:w-2/5 w-full lg:px-3 py-3 lg:mt-8">
+					<div class="lg:w-2/5 w-full lg:px-3 py-3 lg:mt-8 p-4">
 						<label for="image-upload" class="block text-xl font-semibold mb-2">Upload Image:</label>
 						<input
 							type="file"
@@ -146,9 +172,9 @@
 	
 				<div class="text-center text-lg">
 					<button
-						@click.stop="!formFields.every(field => field?.selectedOptions?.length) || !imageName || !screenName ? showErrors = true : generateJSON()"
+						@click.stop="!formFields.every(field => field?.selectedOptions?.length) || !imageName  || !screenName ||!appName ||!githubName ? showErrors = true : generateJSON()"
 						class="font-semibold py-1.5 px-6 rounded"
-						:class="!formFields.every(field => field?.selectedOptions?.length) || !imageName || !screenName ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-600 text-white hover:bg-indigo-500 transition'"
+						:class="!formFields.every(field => field?.selectedOptions?.length) || !imageName  || !screenName ||!appName ||!githubName ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-600 text-white hover:bg-indigo-500 transition'"
 					>
 						Generate JSON
 					</button>

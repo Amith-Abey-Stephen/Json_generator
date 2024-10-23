@@ -47,8 +47,10 @@ createApp({
             showModal: false,     // To control the modal visibility
             enableCTA: false,
             showErrors: false,
+            appName: '',
             screenName: '',
             imageName: '',
+            githubName: '',
         };
     },
     methods: {
@@ -90,10 +92,12 @@ createApp({
 
         generateJSON() {
             const selectedData = {};
-            selectedData.name = this.screenName;
+            selectedData.app_name = this.appName;
+            selectedData.screen_name = this.screenName;
             this.formFields.forEach(field => {
                 selectedData[field.name] = field.selectedOptions;
             });
+            selectedData.github_name = this.githubName;
             selectedData.image = this.imageName;
             selectedData.date = new Date().toISOString();
             this.generatedJSON = JSON.stringify(selectedData, null, 2);
